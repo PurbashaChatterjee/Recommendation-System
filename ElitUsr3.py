@@ -33,16 +33,20 @@ for (key, val) in rec.iteritems():
     new_rec[key] = mode[0]
     
 lists = sorted(new_rec.items(), key=lambda x: x[1], reverse=True)
-lists = lists[:20]   
-
+lists = lists[:20]      
+        
 gameid = zip(*lists)[0]
 gamename=[]
 for id in filereadergame:
     for game in gameid:
         if id[0]==game:
-            gamename.append(id[1])          
+            #name = repr(id[1]).replace("\\", "")
+            name = repr(id[1]).replace("\\x", "")
+            gamename.append(name)          
+
 
 gamename = tuple(gamename)
+print gamename
 score = zip(*lists)[1]
 x_pos = np.arange(len(gamename)) 
 
